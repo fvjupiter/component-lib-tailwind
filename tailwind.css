@@ -3,3 +3,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@layer components {
+    .center{
+      @apply flex items-center justify-center
+    }
+  }
