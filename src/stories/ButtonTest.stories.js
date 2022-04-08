@@ -6,6 +6,7 @@ const stories = storiesOf('Button Test', module)
 stories.add('Test', () => { //works like a react component in here (useState etc.)
     const [num, setnum] = useState(0)
     const [is_clicked, setis_clicked] = useState(false)
+    const [isFreeze, setisFreeze] = useState(false)
     return <div className='ml-32 flex'>
         {/* <Button
 
@@ -63,14 +64,15 @@ stories.add('Test', () => { //works like a react component in here (useState etc
         <Button
             click={() => setnum(num+1)}
             
-            
+            freeze={isFreeze}
             c_w_h_r_d={{ base: 'h-32 w-32 rounded-2xl duration-300' }}
             c_out={{ base: 'm-20 group' }}
             c_mid={{ }}
             c_inn={{ base: 'bg-yellow-300 border-4 border-blue-800', isC:'bg-cyan-300', dis:'bg-black' }}
-            // var={{ shadow: { type: 0 }}}
+            var={{ shadow: { type: 2 }}}
                 ><div className='w-full group-hover:bg-purple-400'>kids</div>
         </Button>
         <div>{num}</div>
+        <div className={`${isFreeze ? 'bg-cyan-300' : 'bg-fuchsia-500'}`} onClick={() => setisFreeze(!isFreeze)}>toggleFreeze</div>
     </div>
 })

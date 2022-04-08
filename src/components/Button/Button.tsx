@@ -101,7 +101,8 @@ const Button = (p: ButtonProps) => {
 
     const [isClassN, setisClassN] = useState(false)
     const [classN, setclassN] = useState({})
-    useEffect(() => { if(!isClassN) getClassNames('set'); setisClassN(true) }, [])
+    useEffect(() => { setisClassN(true) }, [])
+    useEffect(() => getClassNames('set'), [p])
     useEffect(() => console.log(classN), [classN])
 
     const getClassNames = key => {
@@ -149,10 +150,6 @@ const Button = (p: ButtonProps) => {
             isClicked={p.isClicked}
             disabled={p.disabled}
             freeze={p.freeze}
-            // c_w_h_r_d={{ ...p.c_w_h_r_d, ...classNames.c_w_h_r_d }}
-            // c_out={{ ...p.c_out, ...classNames.out }}
-            // c_mid={{ ...p.c_mid, ...classNames.mid }}
-            // c_inn={{ ...p.c_inn, ...classNames.inn }}
             c_w_h_r_d={isClassN ? classN['c_w_h_r_d'] : getClassNames('c_w_h_r_d')}
             c_out={isClassN ? classN['c_out'] : getClassNames('c_out')}
             c_mid={isClassN ? classN['c_mid'] : getClassNames('c_mid')}
