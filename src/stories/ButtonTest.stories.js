@@ -29,20 +29,20 @@ stories.add('Test', () => { //works like a react component in here (useState etc
         {/* <StyledButton
             click={() => setnum(num+1)}
             freeze
-            c_w_h_r_d={{ base: 'h-32 w-32 rounded-2xl duration-300' }}
-            c_out={{ base: 'm-20' }}
-            c_mid={{ base: 'ring-2' }}
-            c_inn={{ base: 'bg-yellow-300 border-4 border-blue-800 ', noC: '', isC: '', dis:'' }}
+            c_w_h_r_d={{ def: 'h-32 w-32 rounded-2xl duration-300' }}
+            c_out={{ def: 'm-20' }}
+            c_mid={{ def: 'ring-2' }}
+            c_inn={{ def: 'bg-yellow-300 border-4 border-blue-800 ', noC: '', isC: '', dis:'' }}
             c_shadow={{ var: 7 }}
                 >0
         </StyledButton>
         <Button
             click={() => setnum(num+1)}
             freeze
-            c_w_h_r_d={{ base: 'h-32 w-32 duration-300' }}
-            c_out={{ base: 'm-20' }}
-            c_mid={{ base: '', noC: '', isC: '', dis:'' }}
-            c_inn={{ base: 'bg-gradient-to-b from-lime-200 to-lime-400 active:shadow-inner-xl', noC: '', isC: '', dis:'' }}
+            c_w_h_r_d={{ def: 'h-32 w-32 duration-300' }}
+            c_out={{ def: 'm-20' }}
+            c_mid={{ def: '', noC: '', isC: '', dis:'' }}
+            c_inn={{ def: 'bg-gradient-to-b from-lime-200 to-lime-400 active:shadow-inner-xl', noC: '', isC: '', dis:'' }}
                 >0
         </Button>
         <StyledButton
@@ -52,10 +52,10 @@ stories.add('Test', () => { //works like a react component in here (useState etc
             // isClicked={false}
             // disabled
             freeze
-            c_w_h_r_d={{ base: 'h-32 w-64 duration-300', noC: '', isC: '', dis:'' }}
-            c_out={{ base: ' m-20', noC: '', isC: '', dis:'' }}
-            // c_mid={{ base: 'bg-green-500', noC: '', isC: '', dis:'' }}
-            // c_inn={{ base: 'bg-cyan-300', noC: '', isC: '', dis:'' }}
+            c_w_h_r_d={{ def: 'h-32 w-64 duration-300', noC: '', isC: '', dis:'' }}
+            c_out={{ def: ' m-20', noC: '', isC: '', dis:'' }}
+            // c_mid={{ def: 'bg-green-500', noC: '', isC: '', dis:'' }}
+            // c_inn={{ def: 'bg-cyan-300', noC: '', isC: '', dis:'' }}
             c_shadow={{ var: 5 }}
             var={{ shadow: 5 }}
 
@@ -63,16 +63,22 @@ stories.add('Test', () => { //works like a react component in here (useState etc
         </StyledButton> */}
         <Button
             click={() => setnum(num+1)}
-            
             freeze={isFreeze}
-            c_w_h_r_d={{ base: 'h-32 w-32 rounded-2xl duration-300' }}
-            c_out={{ base: 'm-20 group' }}
-            c_mid={{ }}
-            c_inn={{ base: 'bg-yellow-300 border-4 border-blue-800', isC:'bg-cyan-300', dis:'bg-black' }}
-            var={{ shadow: { type: 2 }}}
-                ><div className='w-full group-hover:bg-purple-400'>kids</div>
+            c_w_h_r_d={{ def: 'h-32 w-32 rounded-2xl duration-300' }}
+            c_out={{ def: 'm-20' }}
+            c_mid={{ def: '', noC: 'ring-2 ring-blue-900 hover:ring-0', isC: 'ring-0' }}
+            c_inn={{ def: 'border-2 border-blue-300', dis:'bg-black' }}
+            var={{ shadow: { type: 4, outter: 'shadow-3xl', inner: 2 }}}
+            tooltip={{ side: 'top', shadow: 1, c_def: '-top-12 ring-1', children: 'tooltip'}}
+                ><div className='group-hover:text-white'>{num}</div>
         </Button>
-        <div>{num}</div>
-        <div className={`${isFreeze ? 'bg-cyan-300' : 'bg-fuchsia-500'}`} onClick={() => setisFreeze(!isFreeze)}>toggleFreeze</div>
+        <div className={`m-8 ${isFreeze ? 'bg-cyan-300' : 'bg-fuchsia-500'}`} onClick={() => setisFreeze(!isFreeze)}>isFreeze: {isFreeze ? 'true' : 'false'}</div>
+       
     </div>
 })
+// override(p, 'var', 'shadow', 'outter', 0)
+
+
+// const check3 = (obj, key1, key2, key3) => obj[key1] && obj[key1][key2] && obj[key1][key2][key3]
+// const override = (obj, key1, key2, key3, standard) => check3(obj, key1, key2, key3) && overrides.get(key2, key3, obj[key1][key2][key3]) ? obj[key1][key2][key3] : standard
+// console.log(override(p, 'var', 'shadow', 'outter', 0))

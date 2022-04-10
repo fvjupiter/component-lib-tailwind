@@ -7,20 +7,21 @@ export interface CoreButtonProps {
   isClicked?: any;
   disabled?: any;
   freeze?: any;
-  c_w_h_r_d?: { base?: string; noC?: string; isC?: string; dis?: string };
-  c_out?: { base?: string; noC?: string; isC?: string; dis?: string };
-  c_mid?: { base?: string; noC?: string; isC?: string; dis?: string };
-  c_inn?: { base?: string; noC?: string; isC?: string; dis?: string };
+  c_w_h_r_d?: { def?: string; noC?: string; isC?: string; dis?: string };
+  c_out?: { def?: string; noC?: string; isC?: string; dis?: string };
+  c_mid?: { def?: string; noC?: string; isC?: string; dis?: string };
+  c_inn?: { def?: string; noC?: string; isC?: string; dis?: string };
   children?: React.ReactNode;
 }
 
-const CoreButton = (p: CoreButtonProps) => { console.log(p.c_inn)
+const CoreButton = (p: CoreButtonProps) => { 
+  console.log(p)
   const [is_clicked, setis_clicked] = useState(false)
   useEffect(() => { if(p.isClicked != undefined) setis_clicked(p.isClicked) },[p.isClicked])
   useEffect(() => { if(p.isClicked != undefined) setis_clicked(p.isClicked) }, [is_clicked])
 
   const c_width_height_round_duration = p.c_w_h_r_d && `
-    ${p.c_w_h_r_d.base}
+    ${p.c_w_h_r_d.def}
     ${is_clicked ? p.c_w_h_r_d.isC
       : p.c_w_h_r_d.noC}
   `
@@ -28,7 +29,7 @@ const CoreButton = (p: CoreButtonProps) => { console.log(p.c_inn)
   const classNames = {
     out:`
       ${p.disabled ? p.c_out.dis
-        : `${p.c_out.base}
+        : `${p.c_out.def}
            ${is_clicked ? p.c_out.isC 
             : p.c_out.noC}`} 
       ${c_width_height_round_duration}
@@ -36,7 +37,7 @@ const CoreButton = (p: CoreButtonProps) => { console.log(p.c_inn)
     `,
     mid: `
       ${p.disabled ? p.c_mid.dis
-        : `${p.c_mid.base}
+        : `${p.c_mid.def}
           ${is_clicked ? p.c_mid.isC 
             : p.c_mid.noC}`} 
       ${c_width_height_round_duration}
@@ -44,7 +45,7 @@ const CoreButton = (p: CoreButtonProps) => { console.log(p.c_inn)
     `,
     inn: `
       ${p.disabled ? p.c_inn.dis
-        : `${p.c_inn.base}
+        : `${p.c_inn.def}
           ${is_clicked ? p.c_inn.isC 
             : p.c_inn.noC}`} 
       ${c_width_height_round_duration}
